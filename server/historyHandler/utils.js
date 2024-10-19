@@ -28,7 +28,7 @@ export const fetchEvent = async (page, body, options) => await page.evaluate(asy
 }, { body, options })
 
 export const saveEventData = (eventId, eventData) => {
-	const folderPath = `data/${eventId}`;
+	const folderPath = `../app/data/${eventId}`;
 
 	if (!fs.existsSync(folderPath)) {
 		fs.mkdirSync(folderPath, { recursive: true })

@@ -1,18 +1,13 @@
+import { closeMonitor, eventIdInput, monitorContainer, showMonitor, showMonitors, startMonitor, stripperShow } from "./variables.js"
+
 // Vars
+const apiUrl = "http://localhost:8800/api"
+
+const monitors = {}
+
 let stripperToggle = false;
 const stripperImgFirst = "assets/stripper-show.gif"
 const stripperImgSecond = "assets/stripper-at-the-wall.gif"
-
-// Get control elements
-const eventIdInput = document.getElementById("event__id__input");
-const startMonitor = document.getElementById("start__monitor__button")
-const closeMonitor = document.getElementById("close__monitor__button")
-const showMonitor = document.getElementById("show__monitor__button")
-const stripperShow = document.getElementById("stripper__button")
-
-// Get monitor
-const monitorContainer = document.getElementById("monitor__container")
-const monitor = document.getElementById("monitor")
 
 // Stripper element
 const stripper = document.createElement("img")
@@ -36,9 +31,43 @@ eventIdInput.addEventListener("input", function () {
 })
 
 // Configuring buttons
-startMonitor.addEventListener("click", () => { })
+startMonitor.addEventListener("click", async () => {
+	const eventId = eventIdInput.value
+	try {
+		if (monitors[`m${eventId}}`]) {
+			alert(`Monitor already started! (monitor id: ${eventId})`)
+		} else {
+			const response = await fetch(`${apiUrl}/start-event-monitor/${eventId}`, {
+				method: "POST"
+			})
+			monitors[`m${eventId}`] = eventId
 
-closeMonitor.addEventListener("click", () => { })
+			const message = await response.text()
+			alert(message)
+		}
+	} catch (error) {
+		console.log(error)
+	}
+})
+
+closeMonitor.addEventListener("click", async () => {
+	const eventId = eventIdInput.value
+	try {
+		if (!monitors.hasOwnProperty((`m${eventId}`))) {
+			alert(`Monitor not found! (monitor id: ${eventId})`)
+		} else {
+			const response = await fetch(`${apiUrl}/stop-event-monitor/${monitors[`m${eventId}`]}`, {
+				method: "POST"
+			})
+			delete monitors[`m${eventId}`]
+
+			const message = await response.text()
+			alert(message)
+		}
+	} catch (error) {
+		console.log(error)
+	}
+})
 
 showMonitor.addEventListener("click", () => { })
 
@@ -52,4 +81,8 @@ stripperShow.addEventListener("click", () => {
 		monitorContainer.removeChild(stripper)
 	}
 
+})
+
+showMonitors.addEventListener("click", () => {
+	console.log(monitors)
 })

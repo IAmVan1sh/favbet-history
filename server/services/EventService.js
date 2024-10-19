@@ -1,20 +1,20 @@
-import startMonitor from "../historyHandler/main";
-import fs from "fs"
+import startMonitor from "../historyHandler/main.js";
 
 class EventService {
 
-	async startEventMonitor(eventId) {
-		return await startMonitor(eventId)
+	monitors;
+
+	constructor() {
+		this.monitors = {};
 	}
 
-	async stopEventMonitor(eventIntervalId) {
-		clearInterval(eventIntervalId)
+	async startEventMonitor(eventId, repeatTime = 10, timeout = 0) {
+		this.monitors[`m${eventId}`] = await startMonitor(Number(eventId), repeatTime, timeout)
 	}
 
-	async getEventInfo(directoryPath) {
-		const path = "../historyHandler/data"
-		const entities = fs.readdirSync(directoryPath, { withFileTypes: true })
-
+	async stopEventMonitor(eventId) {
+		clearInterval(this.monitors[`m${eventId}`])
+		delete this.monitors[`m${eventId}`]
 	}
 
 }
