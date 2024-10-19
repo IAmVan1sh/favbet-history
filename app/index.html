@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Oleg Durak</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="./styles.css" type="text/css" />
+	</head>
+
+	<body>
+		<header class="monitor__menu">
+			<input type="text" id="event__id__input" placeholder="Enter event id" />
+
+			<section class="monitor__menu__buttons">
+				<button id="start__monitor__button">Start new monitor</button>
+				<button id="close__monitor__button">Close monitor</button>
+				<button id="show__monitor__button">Show info</button>
+				<button id="stripper__button">Show dancing stripper</button>
+			</section>
+		</header>
+
+		<main id="monitor__container" class="monitor__container">
+			<div id="monitor" class="monitor"></div>
+		</main>
+	</body>
+
+	<script src="./api.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</html>

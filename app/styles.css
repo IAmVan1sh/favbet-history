@@ -1,0 +1,66 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: url(assets/pink-stars-background.jpg) repeat;
+	background-color: #414141;
+	padding: 20px;
+}
+
+button {
+	font-weight: 700;
+	color: rgb(235, 168, 179);
+	background-color: #383838;
+
+	padding: 5px 10px;
+	margin-left: 5px;
+	border-radius: 10px;
+	border: 1px solid rgb(235, 168, 179);
+
+	transition: background-color 0.1s linear, color 0.1s linear, border 0.1s linear;
+	text-transform: uppercase;
+}
+
+button:hover {
+	color: #383838;
+	background-color: pink;
+}
+
+button:active {
+	background-color: rgb(247, 159, 174);
+}
+
+input {
+	border-radius: 10px;
+	border: 1px solid rgb(235, 168, 179);
+
+	padding: 5px 10px;
+}
+
+input:focus {
+	outline: 3px solid rgb(247, 159, 174);
+}
+
+/* Monitor menu */
+.monitor__menu {
+	display: flex;
+}
+
+.monitor__menu__buttons {
+	margin-left: 10px;
+}
+
+/* Monitor */
+.monitor__container {
+	display: flex;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.monitor {
+	width: 80%;
+	height: 90vh;
+}
