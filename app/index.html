@@ -13,8 +13,8 @@
 		<header class="monitor__menu">
 			<section class="monitor__menu__inputs">
 				<input type="text" id="event__id__input" placeholder="Enter event id" />
-				<input type="number" id="repeat__time__input" placeholder="Enter repeat time" value="10" />
-				<input type="number" id="timeout__input" placeholder="Enter timeout" value="0" />
+				<input type="number" id="repeat__time__input" placeholder="Enter repeat time" min="1" value="10" />
+				<input type="number" id="timeout__input" placeholder="Enter timeout" min="0" value="0" />
 			</section>
 
 			<section class="monitor__menu__buttons">
@@ -26,8 +26,15 @@
 			</section>
 		</header>
 
+		<div class="time__span__controls">
+			<input type="range" id="monitor__range__input" min="0" class="monitor__range__input" />
+			<span id="time__marker" class="time__marker"></span>
+		</div>
+
 		<main id="monitor__container" class="monitor__container">
-			<div id="monitor" class="monitor"></div>
+			<div id="monitor" class="monitor">
+				<!-- <div id="monitorInner" class="monitorInner"></div> -->
+			</div>
 		</main>
 	</body>
 

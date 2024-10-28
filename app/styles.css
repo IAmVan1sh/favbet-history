@@ -16,7 +16,6 @@ button {
 	background-color: #383838;
 
 	padding: 5px 10px;
-	margin-left: 5px;
 	border-radius: 10px;
 	border: 1px solid rgb(235, 168, 179);
 
@@ -47,20 +46,104 @@ input:focus {
 /* Monitor menu */
 .monitor__menu {
 	display: flex;
+	height: 104px;
+}
+
+.monitor__menu__inputs {
+	display: flex;
+	flex-direction: column;
+}
+
+.monitor__menu__inputs>input {
+	margin-top: 10px;
+}
+
+.monitor__menu__inputs>input:first-child {
+	margin-top: 0;
 }
 
 .monitor__menu__buttons {
+	display: flex;
+	align-items: start;
+	flex-wrap: wrap;
+	width: 300px;
+
 	margin-left: 10px;
+}
+
+.monitor__menu__buttons>button {
+	margin: 10px 10px 0 0;
+}
+
+.monitor__menu__buttons>button:nth-child(1),
+.monitor__menu__buttons>button:nth-child(2) {
+	margin-top: 0;
+}
+
+/* Time span controls */
+.time__span__controls {
+	display: flex;
+
+	margin-top: 20px;
+}
+
+.monitor__range__input {
+	background-color: #414141;
+	width: 100%;
+
+	border-radius: 10px;
+	border: 1px solid rgb(235, 168, 179);
+}
+
+.monitor__range__input::-moz-range-progress {
+	background-color: pink;
+}
+
+.monitor__range__input::-webkit-slider-runnable-track {
+	background-color: pink;
+}
+
+.monitor__range__input::-moz-range-thumb,
+.monitor .monitor__range__input::-webkit-slider-thumb {
+	background: radial-gradient(circle, rgb(235, 168, 179), #414141);
+
+	border: 2px solid rgb(235, 168, 179);
+	border-radius: 50%;
+
+	cursor: pointer;
+}
+
+.monitor__range__input:active,
+.monitor__range__input:focus {
+	outline: none;
+}
+
+.time__marker {
+	background-color: #414141;
+	text-align: center;
+	vertical-align: center;
+	color: #ffffff;
+	width: 15%;
+
+	margin-left: 10px;
+	border-radius: 10px;
 }
 
 /* Monitor */
 .monitor__container {
 	display: flex;
+	justify-content: space-between;
 	width: 100%;
 	margin-top: 20px;
 }
 
 .monitor {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: start;
+	background-color: #414141;
+	color: #FFFFFF;
+
 	width: 80%;
-	height: 90vh;
+	border-radius: 10px;
 }

@@ -8,7 +8,7 @@ class EventService {
 		this.monitors = {};
 	}
 
-	async startEventMonitor(eventId, repeatTime = 10, timeout = 0) {
+	async startEventMonitor(eventId, repeatTime, timeout) {
 		this.monitors[`m${eventId}`] = await startMonitor(Number(eventId), repeatTime, timeout)
 	}
 
