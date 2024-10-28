@@ -5,10 +5,8 @@
 	"license": "MIT",
 	"type": "module",
 	"scripts": {
-		"monitor": "node ./historyHandler/main.js",
 		"dev": "node index.js",
-		"start": "start http://localhost:8888/ && start /B http-server --silent -p 8888 ../app && node index.js",
-		"test": "node test.js"
+		"start": "start http://localhost:8888/ && start /B http-server --silent -p 8888 ../app && node index.js"
 	},
 	"dependencies": {
 		"axios": "^1.7.7",
