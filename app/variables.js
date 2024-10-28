@@ -67,20 +67,24 @@ export const getMarketNames = (markets) => markets.reduce((marketNames, { market
 
 export const parseDataHistory = (dataHistory, marketNames) => dataHistory.map(dataSet => {
 
-	const markets = dataSet.result[0].head_markets;
+	if (dataSet.result.length === 0) {
+		return { "Empty": "EMPTY" }
+	} else {
+		const markets = dataSet.result[0].head_markets;
 
-	const marketCollection = marketNames.reduce((marketCollection, name) => {
-		marketCollection[name] = [];
-		return marketCollection;
-	}, {});
+		const marketCollection = marketNames.reduce((marketCollection, name) => {
+			marketCollection[name] = [];
+			return marketCollection;
+		}, {});
 
-	markets.forEach(market => {
-		const marketIndex = marketNames.indexOf(market.market_name);
-		marketCollection[market.market_name].push(markets[marketIndex].outcomes)
-	})
+		markets.forEach(market => {
+			const marketIndex = marketNames.indexOf(market.market_name);
+			marketCollection[market.market_name].push(markets[marketIndex].outcomes)
+		})
 
-	return marketCollection
-})
+		return marketCollection
+	}
+}).filter(obj => !obj.hasOwnProperty("Empty"))
 
 export const createCoefsTable = (monitor, marketNames, coefsHistory, dataSetIndex = 0) => {
 	const marketElements = marketNames.map((name) => {

@@ -121,7 +121,7 @@ input:focus {
 .time__marker {
 	background-color: #414141;
 	text-align: center;
-	vertical-align: center;
+	line-height: 26px;
 	color: #ffffff;
 	width: 15%;
 

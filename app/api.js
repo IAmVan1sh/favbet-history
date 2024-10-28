@@ -123,12 +123,12 @@ showMonitor.addEventListener("click", async () => {
 	})
 	timeMarker.innerText = timeStamps[0]
 
-	monitorRangeInput.max = dataHistory.length - 1;
-	monitorRangeInput.value = 0;
 
 	marketNames = getMarketNames(dataHistory[0].result[0].head_markets)
 	coefsHistory = parseDataHistory(dataHistory, marketNames)
-	console.log(coefsHistory)
+
+	monitorRangeInput.max = coefsHistory.length - 1;
+	monitorRangeInput.value = 0;
 
 	createCoefsTable(monitor, marketNames, coefsHistory)
 })
